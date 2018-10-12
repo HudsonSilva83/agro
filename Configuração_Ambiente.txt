@@ -1,0 +1,88 @@
+﻿
+IMPORTANTE: 
+Nao iremos usar Rails, somente a linguagem Ruby
+
+
+	1- Ferramentas necessarias para a instalacao no windows:
+
+		1- RailsInstaller: https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-3.4.0.exe
+		2- Console Emulator (Somente Windows): https://github.com/cmderdev/cmder/releases/download/v1.3.5/cmder.zip
+		3- Vscode: https://code.visualstudio.com/
+
+	2- Ferramentas necessarias para a instalacao no Linux:
+
+		1- Instalacao do Ruby para Linux: http://bit.ly/2oKjuei 
+		2 - Usar o terminal do linux
+		3 - Vscode: https://code.visualstudio.com/docs/setup/linux
+                
+
+    3- Baixar o executor que irá startar o navegador desejável
+	
+		3.1 - ChromeDriver para o Chrome: http://chromedriver.chromium.org/downloads
+         	
+		3.2 - Baixar o Geckodriver para o Firefox:  https://github.com/mozilla/geckodriver/releases
+        3.3 - Para o windows, extrair o arquivo colocando no diretório obrigatoriamente: 
+		C:\Windows OU no diretorio: C:\RailsInstaller\Ruby2.3.3\bin
+		Obs: recomendável baixar os dois acima citados (chromedriver e geckodriver) 
+________________________________________________________________________
+
+	Configurar e rodar o Projeto AgroHub:
+
+		Apos concluir a Instalacoo, abra o Console Emulator e digite o seguinte comando:
+
+		1- Com o terminal aberto, acesse o diretorio aonde encontra-se o projeto:
+ 
+			Exemplo: "C: AgroHub"
+
+		2-  Estando no diretorio do projeto pelo terminal, execute o comando: "code ."  ou abra pelo vscode a pasta do projeto.
+
+			Exemplo: "C: AgroHub code ."
+
+		3- Com o vscode aberto, instalar as seguintes extensoes:
+
+			- Cucumber: (Snippets and Syntax Highlight for Gherkin (Cucumber) stevejpurves.cucumber Euclidity)
+			- Ruby: rebornix.ruby Peng Lv
+       		- vscode-icons: robertohuertasm.vscode-icons Roberto Huertas
+
+
+		4-  Vamos agora baixar o gerenciador de pacotes, no terminal digitar o seguinte comando: "gem install bundler"
+                                
+		5- Para projetos novos, será necessário criar o arquivo "Gemfile" para poder baixar as dependencias posteriormente no caso as gem´s.
+           Para isso o comando é: "bundle init". (como o projeto ja existe este arquivo, nao sera necessario executar este comando)
+                                
+ 		6-  Adicione as gem's no arquivo GemFile que econtra-se no vscode do peojeto.
+		Obs: Como ja existe o projeto com as seguintes gem's abaixo configuradas em Gemfile, será apens necessário o seguinte comando 
+		para baixar as dependencias as bibliotecas: "bundle install"                                 
+                                           	
+		    " source "https://rubygems.org"
+			
+			gem 'capybara'  
+			gem 'cucumber'
+			gem 'rspec'
+			gem 'selenium-webdriver'
+			gem 'site_prism'     "
+
+        Obs: O site prism, é compativel com o capybara somente nas versões abaixo de 3.1
+		Então será necessário colocar a versão do capybara da seguinte maneira pelo terminal:
+		* gem install site_prism -v 3.0)
+		E para desinstalar a versão atual do Capybara, será necessário o comando:
+		* gem uninstall capybara -v 3.1.0  (no caso a versão que estiver em uso)                             
+
+		7-  Uma vez instalado as bibliotecas vamos configurar a estrutura do projeto para criar os arquivos as classes.
+            execute o comando "cucumber --init" (Este passo não é necessário para o projeto AgroHub, uma vez que o projeto 
+            ja esta criado com a sua estrutora do cucumber)
+
+        8-  Agora o projeto AgroHub ja pode ser executado.
+            Para excução geral do projeto, basta digitar o comando "cucumber"
+            Para executar cenarios especificos e necessario digitar o seguinte comando com a sua tag:
+		
+			Exemplo:  
+		
+			C:\Automacao\agrohub>"cucumber -t @login"
+			C:\Automacao\agrohub>"cucumber -t@cadastroLogin" 
+			C:\Automacao\agrohub> cucumber -t'@cadastroFazenda','@pesquisarFazenda'
+ 
+ ______________________________________________________________________________________________________________________________________________
+ 			
+			Para maiores duvidas de configuração de ambiente segue o link de auxilio: https://goo.gl/P8xcRS
+
