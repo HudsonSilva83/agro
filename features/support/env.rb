@@ -6,24 +6,26 @@ require 'selenium-webdriver'
 @browser = ENV['BROWSER']
 
 if @browser.eql?('headless')
+  Capybara.javascript_driver = :selenium
+  Capybara.run_server = false
 
-    Capybara.register_driver :selenium do |app|
-    #Capybara::Selenium::Driver.load_selenium_
-    browser_options = ::Selenium::WebDriver::Chrome::Options.new
-    browser_options.args << '--headless'
-    browser_options.args << '--disable-gpu' if Gem.win_platform?
-    Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
-     end
-
+  args = ['--no-default-browser-check']
+  caps = Selenium::WebDriver::Remote::Capabilities.chrome(
+    'chromeOptions' => { 'args' => args }
+  )
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(
+      app,
+      browser: :remote,
+      url: 'http://selenium:4444/wd/hub',
+      desired_capabilities: caps
+    )
   end
-
-Capybara.configure do |config|
-    #config.default_driver = :selenium_chrome
-    config.default_driver = :selenium
-    #config.app_host= 'http://homologacao.painel.agrohub.com.br/'
-    
 end
 
+Capybara.configure do |config|
+  config.default_driver = :selenium
+  config.app_host = 'https://mark7.herokuapp.com'
+end
 
-# 10 segundos para achar um elemento
 Capybara.default_max_wait_time = 10

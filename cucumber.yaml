@@ -1,10 +1,8 @@
 ---
-#default: -p headless -p dot
-#default: -p html -p dot -p json -p bdd -p headless
-default: -p bdd -p headless
-ci: -p json -p dot
+default: -p dot -p html
+ci: -p dot -p json -p headless
 bdd: --format pretty
 dot: --format progress
-html: --format html --out=log/features.html
-json: --format json --out=log/features.json
-headless: BROWSER=headless 
+html: --format html --out=log/report.html
+json: --format json --out=log/report.json
+headless: BROWSER=headless

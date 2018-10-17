@@ -2,6 +2,7 @@ pipeline{
   agent {
     docker {
        image 'ruby'
+       args '--link selenium'
    }
 }
 
@@ -20,9 +21,6 @@ stages {
        sh "cucumber"
 
      }
-
-
     }
-
  }
 }  
