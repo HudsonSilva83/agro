@@ -15,7 +15,7 @@ stages {
             sh "bundle install"
         }
     }
-    stage (Run Features){
+    stage ('Run Features'){
      steps {
        sh "cucumber"
 
