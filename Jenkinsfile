@@ -18,9 +18,13 @@ stages {
     }
     stage ('Run Features'){
      steps {
-       sh "cucumber -p ci -t'@loginS,@pesquisarFazenda'"
+       sh "cucumber -p ci -t@pesquisarFazenda"
+       }
+       steps {
+       
+       sh "cucumber -p ci -t@loginS"
 
-     }
+       }
     }
  }
 }  
