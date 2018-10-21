@@ -1,5 +1,5 @@
 ---
-default: -p dot -p html
+default: -p bdd -p html
 ci: -p dot -p json -p headless
 bdd: --format pretty
 dot: --format progress
